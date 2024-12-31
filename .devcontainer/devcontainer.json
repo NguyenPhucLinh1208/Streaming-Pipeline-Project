@@ -1,0 +1,22 @@
+{
+    "name": "Spark Dev Environment",
+    "dockerComposeFile": "/home/nplinhwsl/DataEngineerProject/ApacheSparkProject/docker-compose.yaml",
+    "service": "spark_project",
+    "workspaceFolder": "/opt",
+  
+    "customizations": {
+        "vscode": {
+          "extensions": [
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "mechatroner.rainbow-csv"
+          ]
+        }
+      },
+  
+    "mounts": [
+        "source=/home/nplinhwsl/DataEngineerProject/ApacheSparkProject,target=/opt,type=bind"
+    ]
+}
+  
+

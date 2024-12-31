@@ -1,0 +1,6 @@
+requests
+pandas
+numpy
+pyspark
+psycopg2-binary
+matplotlib
