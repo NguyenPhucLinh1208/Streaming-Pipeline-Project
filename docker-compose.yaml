@@ -170,24 +170,6 @@ services:
       - shared-libs:/usr/local/lib/python3.12/site-packages
       - ./Kafka:/opt/Kafka
 
-  ksql:
-    image: confluentinc/cp-ksql-server
-    ports:
-    - "8088:8088"
-    environment:
-      KSQL_BOOTSTRAP_SERVERS: "PLAINTEXT://kafka0:9093"
-      KSQL_LISTENERS: "http://0.0.0.0:8088"
-      KSQL_KSQL_SERVICE_ID: "ksql_service_docker"
-      KSQL_KSQL_SCHEMA_REGISTRY_URL: "http://schema-registry:8081/"
-    depends_on:
-      - "kafka0"
-      - "schema-registry"
-    networks:
-      - kafka-net
-    volumes:
-      - shared-libs:/usr/local/lib/python3.12/site-packages
-      - ./Kafka:/opt/Kafka
-
   spark-master:
     image: bitnami/spark:latest
     container_name: spark-master

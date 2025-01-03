@@ -4,3 +4,6 @@ numpy
 pyspark
 psycopg2-binary
 matplotlib
+confluent-kafka[avro]  
+requests
+apache-airflow==2.10.3

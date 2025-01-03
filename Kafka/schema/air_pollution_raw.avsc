@@ -1,0 +1,93 @@
+{
+  "type": "record",
+  "name": "WeatherData",
+  "fields": [
+    {
+      "name": "coord",
+      "type": {
+        "type": "record",
+        "name": "Coord",
+        "fields": [
+          {
+            "name": "lon",
+            "type": "float"
+          },
+          {
+            "name": "lat",
+            "type": "float"
+          }
+        ]
+      }
+    },
+    {
+      "name": "list",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "WeatherList",
+          "fields": [
+            {
+              "name": "main",
+              "type": {
+                "type": "record",
+                "name": "Main",
+                "fields": [
+                  {
+                    "name": "aqi",
+                    "type": "int"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "components",
+              "type": {
+                "type": "record",
+                "name": "Components",
+                "fields": [
+                  {
+                    "name": "co",
+                    "type": "float"
+                  },
+                  {
+                    "name": "no",
+                    "type": "float"
+                  },
+                  {
+                    "name": "no2",
+                    "type": "float"
+                  },
+                  {
+                    "name": "o3",
+                    "type": "float"
+                  },
+                  {
+                    "name": "so2",
+                    "type": "float"
+                  },
+                  {
+                    "name": "pm2_5",
+                    "type": "float"
+                  },
+                  {
+                    "name": "pm10",
+                    "type": "float"
+                  },
+                  {
+                    "name": "nh3",
+                    "type": "float"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "dt",
+              "type": "long"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
