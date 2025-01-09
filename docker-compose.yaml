@@ -27,9 +27,7 @@ services:
     volumes:
       - shared-libs:/usr/local/lib/python3.12/site-packages
     networks:
-      - spark-network
-      - airflow-net
-      - kafka-net
+      - project-network
 
 # cấu hình các dịch vụ airflow.
   airflow-webserver:
@@ -48,9 +46,7 @@ services:
       airflow-init:
         condition: service_completed_successfully
     networks:
-      - airflow-net
-      - kafka-net
-      - spark-network
+      - project-network
 
   airflow-scheduler:
     <<: *airflow-common
@@ -66,9 +62,7 @@ services:
       airflow-init:
         condition: service_completed_successfully
     networks:
-      - airflow-net
-      - kafka-net
-      - spark-network
+      - project-network
 
   airflow-init:
     <<: *airflow-common
@@ -87,7 +81,7 @@ services:
     depends_on: 
       - "spark_project"  # để lấy đúng danh sách thư viện, cần container này chạy đầu tiên
     networks:
-      - airflow-net
+      - project-network
 
 # cấu hình kafka.
   zookeeper:
@@ -97,7 +91,7 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: "2181"
     networks:
-      - kafka-net
+      - project-network
     volumes:
       - zookeeper_data:/var/lib/zookeeper/data
       - zookeeper_txn_logs:/var/lib/zookeeper/log
@@ -122,7 +116,7 @@ services:
     depends_on:
       - "zookeeper"
     networks:
-      - kafka-net
+      - project-network
     volumes:
       - kafka_data:/var/lib/kafka/data
 
@@ -138,7 +132,7 @@ services:
     depends_on:
       - "kafka0"
     networks:
-      - kafka-net
+      - project-network
 
   connect:
     image: confluentinc/cp-kafka-connect
@@ -165,7 +159,7 @@ services:
       - "kafka0"
       - "schema-registry"
     networks:
-      - kafka-net
+      - project-network
     volumes:
       - shared-libs:/usr/local/lib/python3.12/site-packages
       - ./Kafka:/opt/Kafka
@@ -175,13 +169,14 @@ services:
     container_name: spark-master
     hostname: spark-master
     environment:
+      - SPARK_MASTER_WEBUI_PORT=8088
       - SPARK_MODE=master
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
     ports:
-      - "4040:4040" # Spark Web UI
+      - "8088:8088" # Spark Web UI
       - "7077:7077" # Spark Master Port
       - "6066:6066" # Spark Master REST Port
     depends_on:
@@ -190,8 +185,9 @@ services:
       - data:/opt/bitnami/spark/data
       - ./Spark:/opt/Spark
     networks:
-      - spark-network
+      - project-network
     user: "0:0"
+
 
   spark-worker-1:
     image: bitnami/spark:latest
@@ -208,7 +204,7 @@ services:
       - data:/opt/bitnami/spark/data
       - ./Spark:/opt/Spark
     networks:
-      - spark-network
+      - project-network
     user: "0:0"
 
   spark-worker-2:
@@ -226,14 +222,12 @@ services:
       - data:/opt/bitnami/spark/data
       - ./Spark:/opt/Spark
     networks:
-      - spark-network
+      - project-network
     user: "0:0"
 
 
 networks:
-  spark-network:
-  kafka-net:
-  airflow-net:
+  project-network:
 
 volumes:
   shared-libs:

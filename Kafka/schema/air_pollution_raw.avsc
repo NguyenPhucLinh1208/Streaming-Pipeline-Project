@@ -1,6 +1,6 @@
 {
   "type": "record",
-  "name": "WeatherData",
+  "name": "AirPollutionData",
   "fields": [
     {
       "name": "coord",
@@ -15,6 +15,14 @@
           {
             "name": "lat",
             "type": "float"
+          },
+          {
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "name": "district",
+            "type": "string"
           }
         ]
       }

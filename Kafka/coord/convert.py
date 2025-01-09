@@ -14,12 +14,12 @@ coord_list = []
 for district_HN in district_HNs:
     response = requests.get(f"http://api.openweathermap.org/geo/1.0/direct?q={district_HN},Hà Nội,VNM&appid=72dc1092f8152fcd1935938246615de4")
     data_HN = response.json()
-    coord = {"lat": data_HN[0]["lat"], "lon": data_HN[0]["lon"], "distirct": district_HN, "city": "Hà Nội"}
+    coord = {"lat": data_HN[0]["lat"], "lon": data_HN[0]["lon"], "district": district_HN, "city": "Hà Nội"}
     coord_list.append(coord)
-for distric_HCM in district_HCMs:
-    response = requests.get(f"http://api.openweathermap.org/geo/1.0/direct?q={distric_HCM},Hồ Chí Minh,VNM&appid=72dc1092f8152fcd1935938246615de4")
+for district_HCM in district_HCMs:
+    response = requests.get(f"http://api.openweathermap.org/geo/1.0/direct?q={district_HCM},Hồ Chí Minh,VNM&appid=72dc1092f8152fcd1935938246615de4")
     data_HCM = response.json()
-    coord = {"lat": data_HCM[0]["lat"], "lon": data_HCM[0]["lon"], "distirct": distric_HCM, "city": "Hồ Chí Minh"}
+    coord = {"lat": data_HCM[0]["lat"], "lon": data_HCM[0]["lon"], "district": district_HCM, "city": "Hồ Chí Minh"}
     coord_list.append(coord)
 
 with open('/opt/Kafka/coord/coordinate.json', 'w', encoding='utf-8') as f:

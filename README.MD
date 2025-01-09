@@ -162,5 +162,51 @@ https://api.openweathermap.org/data/2.5/air_pollution?lat=20.9755354&lon=105.857
 
 
 ### Dự báo nhiệt độ 5 ngày tới (3hours)
-tách ra
+ {
+    "main": {
+      "temp": 294.88,
+      "feels_like": 294.6,
+      "pressure": 1014,
+      "humidity": 57
+    },
+    "weather": [
+      {
+        "description": "overcast clouds",
+      }
+    ],
+    "wind": {
+      "speed": 3.2,
+      "deg": 125,
+      "gust": 5.33
+    },
+    "visibility": 10000,
+    "dt_txt": "2025-01-07 12:00:00",
+    "location": {
+      "city": Hà Nội,
+      "dictrict": Hoàng Mai
+    }
+  }
 
+
+### dự báo air polution 90 bước ( 1 hour)
+
+    {
+      "main": {
+        "aqi": 5
+      },
+      "components": {
+        "co": 834.47,
+        "no": 0,
+        "no2": 25.02,
+        "o3": 103,
+        "so2": 25.27,
+        "pm2_5": 133.97,
+        "pm10": 152.01,
+        "nh3": 2.69
+      },
+      "dt": 1736247600,
+      "location": {
+        "city": Hà Nội,
+        "dictrict": Hoàng Mai
+      }
+    }

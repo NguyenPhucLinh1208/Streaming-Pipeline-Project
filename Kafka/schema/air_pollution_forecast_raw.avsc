@@ -1,0 +1,45 @@
+{
+  "type": "record",
+  "name": "AirPollutionForecast",
+  "fields": [
+    {
+      "name": "main",
+      "type": {
+        "type": "record",
+        "name": "Main",
+        "fields": [
+          { "name": "aqi", "type": "int" }
+        ]
+      }
+    },
+    {
+      "name": "components",
+      "type": {
+        "type": "record",
+        "name": "Components",
+        "fields": [
+          { "name": "co", "type": "float" },
+          { "name": "no", "type": "float" },
+          { "name": "no2", "type": "float" },
+          { "name": "o3", "type": "float" },
+          { "name": "so2", "type": "float" },
+          { "name": "pm2_5", "type": "float" },
+          { "name": "pm10", "type": "float" },
+          { "name": "nh3", "type": "float" }
+        ]
+      }
+    },
+    { "name": "dt", "type": "long" },
+    {
+      "name": "location",
+      "type": {
+        "type": "record",
+        "name": "Location",
+        "fields": [
+          { "name": "city", "type": "string" },
+          { "name": "dictrict", "type": "string" }
+        ]
+      }
+    }
+  ]
+}

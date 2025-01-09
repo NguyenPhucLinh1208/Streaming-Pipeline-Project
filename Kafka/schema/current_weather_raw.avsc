@@ -1,6 +1,6 @@
 {
   "type": "record",
-  "name": "WeatherData",
+  "name": "CurrentWeatherData",
   "fields": [
     {
       "name": "coord",
@@ -15,6 +15,14 @@
           {
             "name": "lat",
             "type": "float"
+          },
+          {
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "name": "district",
+            "type": "string"
           }
         ]
       }
@@ -88,14 +96,6 @@
     {
       "name": "dt",
       "type": "long"
-    },
-    {
-      "name": "district",
-      "type": "string"
-    },
-    {
-      "name": "city",
-      "type": "string"
     }
   ]
 }

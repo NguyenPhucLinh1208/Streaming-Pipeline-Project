@@ -1,0 +1,57 @@
+{
+  "type": "record",
+  "name": "ForecastWeatherData",
+  "fields": [
+    {
+      "name": "main",
+      "type": {
+        "type": "record",
+        "name": "Main",
+        "fields": [
+          { "name": "temp", "type": "float" },
+          { "name": "feels_like", "type": "float" },
+          { "name": "pressure", "type": "int" },
+          { "name": "humidity", "type": "int" }
+        ]
+      }
+    },
+    {
+      "name": "weather",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Weather",
+          "fields": [
+            { "name": "description", "type": "string" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "wind",
+      "type": {
+        "type": "record",
+        "name": "Wind",
+        "fields": [
+          { "name": "speed", "type": "float" },
+          { "name": "deg", "type": "int" },
+          { "name": "gust", "type": "float" }
+        ]
+      }
+    },
+    { "name": "visibility", "type": "int" },
+    { "name": "dt_txt", "type": "string" },
+    {
+      "name": "location",
+      "type": {
+        "type": "record",
+        "name": "Location",
+        "fields": [
+          { "name": "city", "type": "string" },
+          { "name": "dictrict", "type": "string" }
+        ]
+      }
+    }
+  ]
+}
